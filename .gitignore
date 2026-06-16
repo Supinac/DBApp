@@ -4,3 +4,4 @@ bin
 .zed
 compile_commands.json
 .cache
+.clangd
