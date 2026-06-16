@@ -1,5 +1,6 @@
 notes/*.md
 build
 bin
-.vscode/c_cpp_properties.json
+.zed
 compile_commands.json
+.cache
