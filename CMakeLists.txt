@@ -4,6 +4,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 17)              # use C++17 features
 set(CMAKE_CXX_STANDARD_REQUIRED ON)     # error if compiler is too old
 set(CMAKE_AUTOMOC ON)                   # auto-run Qt's moc on Q_OBJECT classes
+set(CMAKE_AUTOUIC ON)                   # auto-run Qt's uic on .ui files (Designer)
 
 # --- Gentoo multilib workaround -------------------------------------------
 # This box keeps 32-bit libs in /usr/lib (Steam's ABI_X86="64 32") next to the

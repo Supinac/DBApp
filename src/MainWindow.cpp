@@ -1,5 +1,6 @@
 #include "MainWindow.h"
 #include <QLabel>
+#include <QListWidget>
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QWidget>
@@ -7,19 +8,29 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
   setWindowTitle("DBApp");
 
-  auto *central = new QWidget(this);
-  auto *layout = new QVBoxLayout(central);
+  // --- LEFT PANEL ---------------------------------------------------------
+  // create leftPanel as a new QWidget(this)
+  auto *leftPanel = new QWidget(this);
+  // create a QVBoxLayout attached to leftPanel
+  auto *layout = new QVBoxLayout(leftPanel);
+  // create the QListWidget (parented to leftPanel) and add it to the layout
+  auto *listWidget = new QListWidget(leftPanel);
+  layout->addWidget(listWidget);
+  // create the new/delete row: QHBoxLayout + two QPushButtons, add to layout
+  // create the reload button and add to layout
 
-  m_label = new QLabel("clicks: 0", central);
-  m_button = new QPushButton("Click me", central);
-  layout->addWidget(m_label);
-  layout->addWidget(m_button);
+  // --- RIGHT PANEL --------------------------------------------------------
+  // create rightPanel as a new QWidget(this)
+  // create a QVBoxLayout attached to rightPanel
+  // create QLineEdit for title, add to layout
+  // create QTextEdit for body, add to layout
+  // create Save button, add to layout
 
-  setCentralWidget(central);
+  // --- SPLITTER + WIRING --------------------------------------------------
+  // create QSplitter(Qt::Horizontal, this)
+  // splitter->addWidget(leftPanel); splitter->addWidget(rightPanel);
+  // splitter->setSizes({200, 600});
+  // setCentralWidget(splitter);
 
-  connect(m_button, &QPushButton::clicked, this, &MainWindow::onClicked);
-}
-
-void MainWindow::onClicked() {
-  m_label->setText(QString("clicks: %1").arg(++m_count));
+  // connect() the four buttons + the list's currentTextChanged
 }

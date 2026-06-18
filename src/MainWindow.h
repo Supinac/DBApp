@@ -1,19 +1,32 @@
 #pragma once
 #include <QMainWindow>
 
-class QLabel;
-class QPushButton;
+class<QtClassYouNeed>;
+class<AnotherQtClassYouNeed>;
 
-class MainWindow : public QMainWindow {
+class<YourClassName> : public QMainWindow {
   Q_OBJECT
 public:
-  explicit MainWindow(QWidget *parent = nullptr);
+  explicit<YourClassName>(QWidget *parent = nullptr);
 
 private slots:
-  void onClicked();
+  void<slotName1>();
+  void<slotName2>(const QString &<argName>);
 
 private:
-  QLabel *m_label = nullptr;
-  QPushButton *m_button = nullptr;
-  int m_count = 0;
+  <QtClassYouNeed> *memberPtr1 = nullptr;
+  <AnotherQtClassYouNeed> *memberPtr2 = nullptr;
 };
+
+Rule of thumb on whether a widget needs to be a member
+    : -Yes,
+      if a slot has to talk to it later(e.g.m_titleEdit — onSave reads it) - No,
+      if it's just glue used during construction (layouts, panels — make them locals)
+
+      Constructor body(MainWindow.cpp)
+
+      <YourClassName>::<YourClassName>(QWidget *parent)
+    : QMainWindow(parent) {
+  setWindowTitle(<"App name">);
+
+  setCentralWidget(<rootWidget>);
