@@ -1,36 +1,37 @@
 #include "MainWindow.h"
-#include <QLabel>
-#include <QListWidget>
-#include <QPushButton>
-#include <QVBoxLayout>
-#include <QWidget>
+#include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
-  setWindowTitle("DBApp");
+#include <QDebug>
 
-  // --- LEFT PANEL ---------------------------------------------------------
-  // create leftPanel as a new QWidget(this)
-  auto *leftPanel = new QWidget(this);
-  // create a QVBoxLayout attached to leftPanel
-  auto *layout = new QVBoxLayout(leftPanel);
-  // create the QListWidget (parented to leftPanel) and add it to the layout
-  auto *listWidget = new QListWidget(leftPanel);
-  layout->addWidget(listWidget);
-  // create the new/delete row: QHBoxLayout + two QPushButtons, add to layout
-  // create the reload button and add to layout
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent), ui(new Ui::MainWindow) {
+    ui->setupUi(this);
+    setWindowTitle("DBApp");
 
-  // --- RIGHT PANEL --------------------------------------------------------
-  // create rightPanel as a new QWidget(this)
-  // create a QVBoxLayout attached to rightPanel
-  // create QLineEdit for title, add to layout
-  // create QTextEdit for body, add to layout
-  // create Save button, add to layout
+    connect(ui->m_pullBtn, &QPushButton::clicked, this, &MainWindow::onPull);
+    connect(ui->m_saveBtn, &QPushButton::clicked, this, &MainWindow::onSave);
+    connect(ui->m_loadBtn, &QPushButton::clicked, this, &MainWindow::onLoad);
+    connect(ui->m_pushBtn, &QPushButton::clicked, this, &MainWindow::onPush);
+}
 
-  // --- SPLITTER + WIRING --------------------------------------------------
-  // create QSplitter(Qt::Horizontal, this)
-  // splitter->addWidget(leftPanel); splitter->addWidget(rightPanel);
-  // splitter->setSizes({200, 600});
-  // setCentralWidget(splitter);
+MainWindow::~MainWindow() {
+    delete ui;
+}
 
-  // connect() the four buttons + the list's currentTextChanged
+void MainWindow::onPull() {
+    qDebug() << "Pull: slug =" << ui->m_slugEdit->text();
+}
+
+void MainWindow::onSave() {
+    qDebug() << "Save: slug =" << ui->m_slugEdit->text()
+             << "title =" << ui->m_titleEdit->text();
+}
+
+void MainWindow::onLoad() {
+    qDebug() << "Load: slug =" << ui->m_slugEdit->text();
+}
+
+void MainWindow::onPush() {
+    qDebug() << "Push: slug =" << ui->m_slugEdit->text()
+             << "title =" << ui->m_titleEdit->text();
 }
