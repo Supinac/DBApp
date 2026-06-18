@@ -46,6 +46,13 @@
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QPushButton" name="m_pushNewBtn">
+         <property name="text">
+          <string>Push New</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </item>
@@ -54,14 +61,14 @@
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
         <widget class="QLineEdit" name="m_slugEdit">
-         <property name="text">
+         <property name="placeholderText">
           <string>slug</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QLineEdit" name="m_titleEdit">
-         <property name="text">
+         <property name="placeholderText">
           <string>title</string>
          </property>
         </widget>
@@ -86,9 +93,6 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <tabstops>
-  <tabstop>m_bodyEdit</tabstop>
- </tabstops>
  <resources/>
  <connections/>
 </ui>

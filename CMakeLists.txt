@@ -26,9 +26,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 
 add_executable(DBApp          # name of the binary
     src/main.cpp
-    src/MainWindow.h
     src/MainWindow.cpp
-    src/ApiClient.h
     src/ApiClient.cpp
 )
 

@@ -1,22 +1,27 @@
 #pragma once
+#include "ApiClient.h"
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui {
+class MainWindow;
+}
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+	explicit MainWindow(QWidget *parent = nullptr);
+	~MainWindow();
 
 private slots:
-    void onPull();
-    void onSave();
-    void onLoad();
-    void onPush();
+	void onPull();
+	void onSave();
+	void onLoad();
+	void onPush();
+	void onPushNew();
 
 private:
-    Ui::MainWindow *ui;
+	Ui::MainWindow *ui;
+	ApiClient *m_api;
 };
