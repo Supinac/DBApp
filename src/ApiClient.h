@@ -10,8 +10,7 @@ public:
 	explicit ApiClient(QObject *parent = nullptr);
 	void pull(const QString &slug);
 	void push(const QString &slug, const QString &title, const QString &body);
-	void pushNew(const QString &slug, const QString &title,
-	             const QString &body); // Finish later
+	void pushNew(const QString &slug, const QString &title, const QString &body); // Finish later
 signals:
 	void pulled(const QString &title, const QString &body);
 	void pushed();

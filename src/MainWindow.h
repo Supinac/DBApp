@@ -16,10 +16,9 @@ public:
 
 private slots:
 	void onPull();
-	void onSave();
-	void onLoad();
 	void onPush();
 	void onPushNew();
+	void onClear();
 
 private:
 	Ui::MainWindow *ui;
